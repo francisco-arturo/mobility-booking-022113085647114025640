@@ -11,17 +11,19 @@ instant-quote and booking flow, shaped for a third-party booking platform.
 
 ## State
 
-- **Review handover:** http://127.0.0.1:4319 (`npm start`, or `node dev-server.mjs`).
-- **Verification:** `.\init.ps1` → 226 checks passed, structural score 100/100.
-- **Not pushed, not deployed, no proposal written.** All three wait on the user's approval.
+- **Live:** https://mobility-booking-022113085647114025.vercel.app
+- **Repository:** https://github.com/francisco-arturo/mobility-booking-022113085647114025640
+- **Verification:** `.\init.ps1` → 226 checks passed, structural score 100/100. Live routes and API
+  return 200; a live booking (`NL-B5BHVV`) was created and listed.
+- Vercel Authentication is disabled on the project so the link opens without a Vercel account.
+- Cover letter drafted in chat, not yet sent; no tracker row until it is sent.
 
 ## Recommended Next Step
 
-1. Open http://127.0.0.1:4319 and walk the path in `DEMO.md` (home → quick quote → booking → `/ops`).
-2. After approval: confirm the GitHub repository URL matches
-   `mobility-booking-022113085647114025640`, add it to `github.json` → `approved_remotes`, push with
-   the one-shot escalation, then `node .harness/deploy.mjs mobility-booking-022113085647114025640`.
-3. Update `DEMO.md` with the live URL and send it back before any proposal.
+1. Confirm the live link renders for the client (it is public, no login).
+2. If the client replies, run a scoping call: payment provider, booking platform, staff roles,
+   content ownership, and whether the brand direction is the one to keep.
+3. Reuse this prototype as the proof in later proposals; the demo URL is stable.
 
 ## Files
 

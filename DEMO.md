@@ -4,11 +4,15 @@ A brand-led website for a fictional Bay Area chauffeur company, with a working i
 booking engine. Built as a response to the Upwork post asking for a transportation and mobility site
 with service pages, booking integration, and room to grow.
 
-- **Local URL (review handover):** http://127.0.0.1:4319
-- **Start locally:** `npm start` (or `node dev-server.mjs`), then open the URL above
-- **Live URL:** _not deployed yet — deployment happens after the user approves the local build and
-  provides the repository URL_ (`node .harness/deploy.mjs mobility-booking-022113085647114025640`)
-- **Last verified:** 2026-10-22
+- **Live URL:** https://mobility-booking-022113085647114025.vercel.app
+- **Repository:** https://github.com/francisco-arturo/mobility-booking-022113085647114025640
+- **Deploy:** `node .harness/deploy.mjs mobility-booking-022113085647114025640` (from the workspace root)
+- **Local fallback:** `npm start` → http://127.0.0.1:4319
+- **Last verified:** 2026-10-22. Live `/`, `/services`, `/fleet`, `/booking`, `/about`, `/contact`, `/ops`,
+  `/api/catalog` and `/api/bookings` all return 200; live quote SFO to Downtown SF returns 14.6 miles,
+  four classes, sedan $90; a live POST created `NL-B5BHVV` at $122 and `/ops` listed it.
+- **Note on the host:** Vercel truncates generated aliases to 35 characters, so the public host is one
+  digit shorter than the session name. The repository and Vercel project keep the full name.
 
 ## The 60-second path
 
