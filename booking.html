@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a ride — Northlane</title>
+<meta name="description" content="Get a fixed fare and book a chauffeured transfer across the Bay Area in three steps. Live availability for sedans, SUVs, vans, and Sprinter coaches.">
+<meta name="theme-color" content="#0b0d10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="booking-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Northlane home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18V6l12 12V6"/></svg>
+      </span>
+      <span class="brand-name">Northlane</span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a class="nav-link" href="/services">Services</a>
+      <a class="nav-link" href="/fleet">Fleet</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/contact">Contact</a>
+      <a class="btn btn--signal" href="/booking" aria-current="page">Book a ride</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:+14155550142">+1 (415) 555-0142</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="booking-shell">
+  <h1 class="visually-hidden">Book a chauffeured ride</h1>
+  <aside class="booking-aside">
+    <div class="booking-aside-inner">
+      <div>
+        <p class="eyebrow eyebrow--light">Reservations</p>
+        <h2>Your trip, at a glance.</h2>
+      </div>
+
+      <div class="summary-list">
+        <div><span class="k">Route</span><span class="v" data-summary="route">--</span></div>
+        <div><span class="k">When</span><span class="v" data-summary="when">--</span></div>
+        <div><span class="k">Party</span><span class="v" data-summary="party">--</span></div>
+        <div><span class="k">Vehicle</span><span class="v" data-summary="vehicle">Choose at step 2</span></div>
+      </div>
+
+      <div class="summary-total">
+        <span class="k" style="color:rgba(244,240,231,.5);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase">Total</span>
+        <strong data-summary="total">--</strong>
+      </div>
+
+      <div class="aside-note">
+        The quoted total includes tolls, airport access, and a licensed chauffeur. No card is charged in this prototype; a dispatcher confirms every reservation.
+      </div>
+
+      <div class="small" style="color:rgba(244,240,231,.55)">
+        Need to talk it through?<br>
+        <a href="tel:+14155550142" style="color:var(--bone)">+1 (415) 555-0142</a><br>
+        Answered 24 hours.
+      </div>
+    </div>
+  </aside>
+
+  <div class="booking-main">
+    <div class="booking-topbar" id="booking-topbar">
+      <div class="steps" aria-label="Booking steps">
+        <div class="step is-active" data-step="1"><span class="dot">1</span><span class="label">Trip</span></div>
+        <span class="sep" aria-hidden="true"></span>
+        <div class="step" data-step="2"><span class="dot">2</span><span class="label">Ride</span></div>
+        <span class="sep" aria-hidden="true"></span>
+        <div class="step" data-step="3"><span class="dot">3</span><span class="label">Details</span></div>
+      </div>
+      <a class="text-link" href="/contact">Need help?</a>
+    </div>
+
+    <div class="step-panel is-active booking-panel" data-step="1" id="step-1">
+      <h2>Where are we going?</h2>
+      <p>Choose your locations and time. We will price every class against live availability for that date.</p>
+
+      <div class="alert" id="quote-alert" role="alert" aria-live="polite"></div>
+
+      <form id="trip-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="from">Pick-up</label>
+            <input id="from" name="from" list="zone-options" autocomplete="off" placeholder="Airport or address" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="to">Drop-off</label>
+            <input id="to" name="to" list="zone-options" autocomplete="off" placeholder="Where to?" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="date">Date</label>
+            <input id="date" name="date" type="date" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="time">Pick-up time</label>
+            <input id="time" name="time" type="time" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="passengers">Passengers</label>
+            <select id="passengers" name="passengers">
+              <option>1</option>
+              <option selected>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>8</option>
+              <option>10</option>
+              <option>12</option>
+            </select>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="bags">Luggage</label>
+            <select id="bags" name="bags">
+              <option>0</option>
+              <option>1</option>
+              <option selected>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>6</option>
+              <option>8</option>
+              <option>10</option>
+              <option>12</option>
+            </select>
+            <span class="field-error"></span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <p class="form-note">Fixed fares. No surge pricing, no card details, no account.</p>
+          <button class="btn btn--signal" type="submit">See live prices</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="step-panel booking-panel" data-step="2" id="step-2">
+      <h2>Choose your ride.</h2>
+      <p id="ride-status">Checking availability...</p>
+      <div class="ride-options" id="ride-options"></div>
+      <div class="fare-breakdown" id="fare-breakdown"></div>
+
+      <div class="form-actions">
+        <button class="btn btn--ghost" type="button" data-back="1">Back to trip</button>
+        <button class="btn btn--signal" type="button" id="to-step-3">Continue to details</button>
+      </div>
+    </div>
+
+    <div class="step-panel booking-panel" data-step="3" id="step-3">
+      <h2>Who is travelling?</h2>
+      <p>We will send the confirmation and the chauffeur's details to this address.</p>
+
+      <div class="alert" id="booking-alert" role="alert" aria-live="polite"></div>
+
+      <form id="passenger-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" autocomplete="name" placeholder="Alex Morgan" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="phone">Mobile number</label>
+            <input id="phone" name="phone" autocomplete="tel" placeholder="+1 415 555 0100" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field full">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="flight">Flight number <span class="hint">optional</span></label>
+            <input id="flight" name="flight" placeholder="UA 512">
+          </div>
+          <div class="field">
+            <label>Selected class</label>
+            <input id="selected-vehicle" name="selected" readonly value="" aria-describedby="selected-vehicle-label">
+            <span class="hint" id="selected-vehicle-label">Choose a class at step 2</span>
+          </div>
+          <div class="field full">
+            <label for="notes">Anything the chauffeur should know? <span class="hint">optional</span></label>
+            <textarea id="notes" name="notes" placeholder="Name board, child seat, extra stop, terminal preference..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn--ghost" type="button" data-back="2">Back to ride</button>
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+            <p class="form-note">No payment is taken in this prototype.</p>
+            <button class="btn btn--signal" type="submit" id="confirm-booking">Confirm reservation</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <section class="confirmation" id="confirmation" hidden aria-live="polite">
+      <p class="eyebrow">Reservation requested</p>
+      <div class="ref" id="confirm-ref">NL-000000</div>
+      <p><strong id="confirm-name">Traveller</strong>, your car is being assigned. A dispatcher will confirm by email and text within 15 minutes.</p>
+
+      <div class="confirm-grid">
+        <div><span class="k">Vehicle</span><span id="confirm-vehicle">--</span></div>
+        <div><span class="k">Route</span><span id="confirm-route">--</span></div>
+        <div><span class="k">When</span><span id="confirm-when">--</span></div>
+        <div><span class="k">Party</span><span id="confirm-party">--</span></div>
+        <div><span class="k">Total</span><span id="confirm-price">--</span></div>
+        <div><span class="k">Sent to</span><span id="confirm-email">--</span></div>
+      </div>
+
+      <ol class="next-steps">
+        <li><span class="n">01</span><span>A dispatcher confirms the vehicle and sends your chauffeur's name and mobile number.</span></li>
+        <li><span class="n">02</span><span>On the day, your chauffeur texts the meeting point 30 minutes before pick-up.</span></li>
+        <li><span class="n">03</span><span>Flight delayed? Reply to the text or call the 24-hour line. The car moves with you.</span></li>
+      </ol>
+
+      <div class="confirm-actions">
+        <a class="btn btn--ghost" href="#" id="book-another">Book another ride</a>
+        <a class="btn btn--signal" href="/contact">Add a note to this booking</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<datalist id="zone-options">
+  <option value="San Francisco International (SFO)"></option>
+  <option value="Oakland International (OAK)"></option>
+  <option value="San Jose International (SJC)"></option>
+  <option value="Downtown San Francisco"></option>
+  <option value="Mission District"></option>
+  <option value="Marina and the Presidio"></option>
+  <option value="Downtown Oakland"></option>
+  <option value="Berkeley"></option>
+  <option value="Palo Alto"></option>
+  <option value="Mountain View"></option>
+  <option value="Menlo Park"></option>
+  <option value="Sausalito"></option>
+  <option value="Napa Valley"></option>
+  <option value="Half Moon Bay"></option>
+</datalist>
+
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/booking.js" defer></script>
+</body>
+</html>

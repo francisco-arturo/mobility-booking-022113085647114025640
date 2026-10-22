@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operations board — Northlane</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0d10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="ops-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header is-scrolled">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Northlane home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18V6l12 12V6"/></svg>
+      </span>
+      <span class="brand-name">Northlane</span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a class="nav-link" href="/services">Services</a>
+      <a class="nav-link" href="/fleet">Fleet</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/contact">Contact</a>
+      <a class="btn btn--signal" href="/booking">Book a ride</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:+14155550142">+1 (415) 555-0142</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <div class="ops-head">
+      <div>
+        <p class="eyebrow">Internal · dispatcher view</p>
+        <h1 class="mt-2">Operations board</h1>
+        <p class="small">Every booking made on the site lands here through the same API. Update a status and it is written back to the store.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span class="small" id="ops-updated">Loading...</span>
+        <button class="btn btn--ghost" type="button" id="ops-refresh">Refresh</button>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi"><span>Awaiting confirmation</span><strong data-kpi="requested">--</strong></div>
+      <div class="kpi"><span>Confirmed</span><strong data-kpi="confirmed">--</strong></div>
+      <div class="kpi"><span>Booked value</span><strong data-kpi="revenue">--</strong></div>
+      <div class="kpi"><span>All reservations</span><strong data-kpi="total">--</strong></div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="bookings">
+        <thead>
+          <tr>
+            <th>Reference</th>
+            <th>Route</th>
+            <th>Pick-up</th>
+            <th>Vehicle</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Flight</th>
+          </tr>
+        </thead>
+        <tbody id="bookings-body">
+          <tr><td colspan="7" class="ops-empty">Loading reservations...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ops-empty" id="ops-empty" hidden>No reservations yet. Make a booking from the booking flow and it will appear here.</p>
+
+    <p class="small mt-6" style="padding-bottom:40px">This board is a prototype view over the bookings API. In production it would sit behind staff authentication, and the store would be the client's booking platform rather than a JSON file.</p>
+  </div>
+</main>
+
+<footer class="site-footer" style="padding:32px 0">
+  <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
+    <span class="small" style="color:rgba(244,240,231,.5)">&copy; <span data-year>2026</span> Northlane Chauffeur Services. Concept prototype.</span>
+    <a class="text-link" href="/" style="color:var(--bone);font-size:0.78rem">Back to the site</a>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/ops.js" defer></script>
+</body>
+</html>

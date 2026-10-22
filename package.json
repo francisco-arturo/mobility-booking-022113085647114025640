@@ -1,0 +1,16 @@
+{
+  "name": "northlane-mobility",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Northlane: brand-led ground transportation site with instant quoting and a booking engine.",
+  "type": "module",
+  "scripts": {
+    "start": "node dev-server.mjs",
+    "dev": "node dev-server.mjs",
+    "test": "node tests/run.mjs",
+    "verify": "node tests/run.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

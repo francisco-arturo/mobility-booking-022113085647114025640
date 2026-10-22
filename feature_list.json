@@ -1,0 +1,62 @@
+{
+  "prototype": "mobility-booking-022113085647114025640",
+  "purpose": "Brand-led website for a premium transportation and mobility company: service and fleet pages, instant quote and booking flow with live availability, a bookings API ready for a third-party booking platform, and a scalable content structure for future services.",
+  "created": "2026-10-22",
+  "last_updated": "2026-10-22",
+  "conventions": {
+    "status_values": ["todo", "in_progress", "blocked", "done"],
+    "verification": ".\\init.ps1 (Windows) / ./init.sh (bash)",
+    "one_feature_at_a_time": true
+  },
+  "features": [
+    {
+      "id": "proto-001",
+      "name": "Brand site, instant quote, and booking engine",
+      "description": "Northlane: a brand-led six-page site (home, services, fleet, booking, about, contact) with a three-step booking flow, server-computed fares and availability across four vehicle classes and fourteen Bay Area zones, a bookings API (quote, bookings, catalog, contact) that runs unchanged on Vercel, and an unauthenticated dispatcher board at /ops.",
+      "status": "done",
+      "dependencies": [],
+      "evidence": "2026-10-22: `node tests/run.mjs` -> PASSED: 226 checks (pricing, booking API, site structure, design tokens, repo hygiene). `powershell -ExecutionPolicy Bypass -File .\\init.ps1` -> 226 checks passed; validator 100/100. HTTP smoke test on http://127.0.0.1:4319: /, /services, /fleet, /booking, /about, /contact, /ops, /api/catalog all 200; /nope 404; POST /api/bookings created NL-PLC9SM at the server-computed price of $122 for SFO to Palo Alto.",
+      "done_criteria": [
+        "Behavior implemented",
+        "Verification run and recorded in progress.md",
+        "Local handover URL live at http://127.0.0.1:4319"
+      ]
+    },
+    {
+      "id": "proto-002",
+      "name": "Payments and deposit rules",
+      "status": "todo",
+      "dependencies": ["proto-001"],
+      "description": "Card capture for one-off bookings and accounts, deposits, cancellation rules, and receipts. Requires the client's provider choice before implementation.",
+      "evidence": "",
+      "done_criteria": ["Provider selected by the client", "Authorisation runs in test mode", "Booking and ops views show payment state", "Verification updated"]
+    },
+    {
+      "id": "proto-003",
+      "name": "Third-party booking platform adapter",
+      "status": "todo",
+      "dependencies": ["proto-001"],
+      "description": "Replace the demo availability and store with a provider feed and reservation push, plus a signed webhook that maps statuses into the five the UI understands. See INTEGRATIONS.md.",
+      "evidence": "",
+      "done_criteria": ["Availability comes from the provider", "Bookings are created in the provider", "Webhook updates /ops", "Tests cover the mapping"]
+    },
+    {
+      "id": "proto-004",
+      "name": "Staff authentication and dispatch assignment",
+      "status": "todo",
+      "dependencies": ["proto-001"],
+      "description": "Protect /ops, add roles (dispatcher, manager), assign a named chauffeur and vehicle to a reservation, and record the assignment in the audit trail.",
+      "evidence": "",
+      "done_criteria": ["Unauthenticated /ops is refused", "Assignment is persisted", "Audit entry recorded"]
+    },
+    {
+      "id": "proto-005",
+      "name": "Editable content layer",
+      "status": "todo",
+      "dependencies": ["proto-001"],
+      "description": "Move services, fares, coverage, and FAQ copy into a content source the client can edit without a deploy, with previews before publish.",
+      "evidence": "",
+      "done_criteria": ["Content rendered from the source", "Client can edit and preview", "Existing pages keep their design"]
+    }
+  ]
+}
